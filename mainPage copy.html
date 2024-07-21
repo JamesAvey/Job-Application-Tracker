@@ -8,32 +8,51 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
-   
     .container-fluid {
       display: flex;
-      min-height: 100vh; 
+      min-height: 100vh;
     }
     .sidebar {
-      background-color: #f8f9fa; 
-      width: 125px; 
-      position: sticky; 
-      top: 0; 
-      height: 100vh; 
-      z-index: 100; 
+      background-color: #f8f9fa;
+      width: 125px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 100;
     }
     .main-content {
       flex: 1;
       padding: 20px;
-      background-color: #fff; 
-      margin-left: 50px; 
+      background-color: #fff;
+      margin-left: 10px;
     }
     .allApplications {
-      text-align: left; 
-      margin: 0; 
-      padding-left: 15px; 
+      text-align: left;
+      margin: 15px 0 50px 0;
+      padding-left: 15px;
+      margin-bottom: 50px; /* Added space below the heading */
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .positionSearch,
+    .companySearch {
+      width: 200px;
+      height: 40px;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .button-container {
+      margin-left: auto;
     }
     .table-container {
-      padding-left: 15px;
+      position: relative;
     }
   </style>
 </head>
@@ -85,7 +104,18 @@
     </nav>
     <div class="main-content">
       <h1 class="allApplications">All Applications</h1>
-      <div class="table-container mt-3">
+
+      <div class="search-container">
+        <input type="text" class="form-control companySearch" id="companySearch" placeholder="Company Search">
+        <input type="text" class="form-control positionSearch" id="positionSearch" placeholder="Position Search">
+        <div class="button-container">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addApplicantModal">
+            Add Application
+          </button>
+        </div>
+      </div>
+
+      <div class="table-container">
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -94,6 +124,7 @@
               <th>Salary</th>
               <th>Location</th>
               <th>Status</th>
+              <th>Length</th>
             </tr>
             <tr>
               <td>Tech Innovations</td>
@@ -169,6 +200,42 @@
           <tbody>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addApplicantModal" tabindex="-1" aria-labelledby="addApplicantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addApplicantModalLabel">Add Application</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="company" class="form-label">Company</label>
+              <input type="text" class="form-control" id="company" required>
+            </div>
+            <div class="mb-3">
+              <label for="position" class="form-label">Position</label>
+              <input type="text" class="form-control" id="position" required>
+            </div>
+            <div class="mb-3">
+              <label for="salary" class="form-label">Salary</label>
+              <input type="text" class="form-control" id="salary" required>
+            </div>
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" class="form-control" id="location" required>
+            </div>
+            <div class="mb-3">
+              <label for="length" class="form-label">length</label>
+              <input type="text" class="form-control" id="length" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Applicant</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

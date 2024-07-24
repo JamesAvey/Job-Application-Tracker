@@ -18,7 +18,6 @@ public class Application {
     private String length;
     private int status;
 
-    // Getters and Setters
 
     public Long getApplicationID() {
         return applicationID;

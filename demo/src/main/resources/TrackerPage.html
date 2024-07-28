@@ -127,7 +127,7 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Table rows will be populated here by JavaScript -->
+
         </tbody>
       </table>
     </div>
@@ -182,7 +182,7 @@
     // Fetch applications from the backend and display them in the table
     const fetchApplications = async () => {
       try {
-        const response = await fetch('/api/v1/application'); // Adjust URL if needed
+        const response = await fetch('http://localhost:8080/api/v1/application');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -212,7 +212,7 @@
       });
 
       try {
-        const response = await fetch('/api/v1/application', { // Adjust URL if needed
+        const response = await fetch('http://localhost:8080/api/v1/application', { // Adjust URL if needed
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

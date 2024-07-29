@@ -132,5 +132,56 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get references to the DOM elements
+        const positionInput = document.getElementById("positionInput");
+        const companyInput = document.getElementById("companyInput");
+        const questionInput = document.getElementById("questionInput");
+        const submitButton = document.querySelector(".btn-primary");
+        const responseTextarea = document.getElementById("responseTextarea");
+
+        // Add an event listener to the submit button
+        submitButton.addEventListener("click", async function () {
+            // Get the values from the inputs
+            const position = positionInput.value;
+            const company = companyInput.value;
+            const question = questionInput.value;
+
+            // Create a request payload
+            const payload = {
+                position: position,
+                company: company,
+                question: question
+            };
+
+            try {
+                // Send a POST request to the backend API
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                // Check if the request was successful
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // Parse the JSON response
+                const data = await response.json();
+
+                // Update the textarea with the response
+                responseTextarea.value = data.response;
+
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+                responseTextarea.value = 'An error occurred while fetching the response.';
+            }
+        });
+    });
+</script>
 </body>
 </html>

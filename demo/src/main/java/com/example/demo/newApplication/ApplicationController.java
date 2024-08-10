@@ -48,7 +48,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/application")
-@CrossOrigin(origins = "http://localhost:63342") // Adjust to your frontend's origin
+@CrossOrigin(origins = "http://localhost:63342")
 public class ApplicationController {
 
     private final ApplicationService applicationService;
